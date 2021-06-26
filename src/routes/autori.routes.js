@@ -11,7 +11,7 @@ router.post('/create', async (req, res) => {
     console.log(AutoriApi)
     const response = await AutoriModel.create(AutoriApi);
     console.log(response)
-    res.json({ status: 'ok' })
+    res.json(response)
 });
 
 

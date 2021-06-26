@@ -10,13 +10,13 @@ router.post('/create', async (req, res) => {
     console.log(CursuriApi)
     const response = await CursuriModel.create(CursuriApi);
     console.log(response)
-    res.json({ status: 'ok' })
+    res.json({ response })
 })
 
 router.get('/get', async (req, res) => {
     const ListaCursuri = await CursuriModel
-    .find({})
-    .populate('Autor')
+        .find({})
+        .populate('Autor')
 
     res.json(ListaCursuri)
     console.log('Response => ', ListaCursuri)

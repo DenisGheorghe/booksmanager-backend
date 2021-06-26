@@ -10,13 +10,13 @@ router.post('/create', async (req, res) => {
     console.log(AngajatiApi)
     const response = await AngajatiModel.create(AngajatiApi);
     console.log(response)
-    res.json({ status: 'ok' })
+    res.json({ response })
 });
 
 router.get('/get', async (req, res) => {
     const ListaAngajati = await AngajatiModel
-    .find({})
-    .populate('Autor')
+        .find({})
+        .populate('Autor')
 
     res.json(ListaAngajati)
     console.log('Response => ', ListaAngajati)

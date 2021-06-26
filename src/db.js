@@ -1,6 +1,6 @@
 const { connect } = require("mongoose");
 const mongoose = require('mongoose');
-const CartiModel = require ('./Models/Carti');
+const CartiModel = require('./Models/Carti');
 
 
 try {
@@ -16,7 +16,7 @@ try {
     // kitty.save().then(() => console.log('meow'));
     console.log('Carti require =>', CartiModel);
     console.log('Carti from mongoose =>', mongoose.model('CartiModel'));
-}  
+}
 
 catch (error) {
     console.log("Error", error);

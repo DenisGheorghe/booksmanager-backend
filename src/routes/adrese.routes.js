@@ -10,13 +10,13 @@ router.post('/create', async (req, res) => {
     console.log(AdreseApi)
     const response = await AdreseModel.create(AdreseApi);
     console.log(response)
-    res.json({ status: 'ok' })
+    res.json({ response })
 });
 
 router.get('/get', async (req, res) => {
     const ListaAdrese = await AdreseModel
-    .find({})
-    .populate('Autor')
+        .find({})
+        .populate('Autor')
 
     res.json(ListaAdrese)
     console.log('Response => ', ListaAdrese)

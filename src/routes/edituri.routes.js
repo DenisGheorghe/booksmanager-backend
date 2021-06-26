@@ -10,12 +10,12 @@ router.post('/create', async (req, res) => {
     console.log(Test)
     const response = await EdituriModel.create(Test);
     console.log(response)
-    res.json({ status: 'ok' })
+    res.json({ response })
 })
 
 router.get('/get', async (req, res) => {
     const ListaEdituri = await EdituriModel
-    .find({})
+        .find({})
 
     res.json(ListaEdituri)
     console.log('Response => ', ListaEdituri)

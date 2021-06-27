@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-// mongoose.set('useCreateIndex', true)
-// unique: true, match: '/^.{0,20}$/'
 
 
 const Fisa_ImprumutSchema = new mongoose.Schema({

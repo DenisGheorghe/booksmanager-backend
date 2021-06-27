@@ -1,12 +1,9 @@
 const mongoose = require('mongoose');
-// mongoose.set('useCreateIndex', true)
-// unique: true, match: '/^.{0,20}$/'
 
 
 const CursuriSchema = new mongoose.Schema({
-    _id:{type: String, required: true },
     Denumire: { type: String, required: true },
-    Tip: { type: String, required: true },
+    Tip: { type: String, required: true, enum: ["Online", "Fizic"] },
     Limba: { type: String, required: true },
 },
     {

@@ -9,7 +9,7 @@ router.post('/create', async (req, res) => {
     const Test = req.body
     console.log(Test)
     const newBook = await CartiModel.create(Test);
-    const response = await CartiModel.populate(newBook, { path: "Autor" })
+    const response = await CartiModel.findOne(newBook).populate("Autor").populate("Cod_Editura")
     console.log(response)
     res.json(response)
 })
@@ -18,6 +18,7 @@ router.get('/get', async (req, res) => {
     const ListaCarti = await CartiModel
         .find({})
         .populate('Autor')
+        .populate('Cod_Editura')
 
     res.json(ListaCarti)
     console.log('Response => ', ListaCarti)

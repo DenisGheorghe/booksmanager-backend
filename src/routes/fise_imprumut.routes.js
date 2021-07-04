@@ -15,11 +15,20 @@ router.post('/create', async (req, res) => {
 
 router.get('/get', async (req, res) => {
     const Fise_Imprumut = await Fise_ImprumutModel
-    .find({})
-    .populate('Autor')
+        .find({})
+        .populate('Cod_Carte')
+        .populate('Cusant')
+        .populate('Cod_Angajat')
 
     res.json(Fise_Imprumut)
     console.log('Response => ', Fise_Imprumut)
 });
+router.delete('/delete', async (req, res) => {
+    const AutoriApi = req.body
+    console.log(AutoriApi)
+    const response = await AutoriModel.deleteOne(AutoriApi);
+    console.log(response)
+    res.json({ status: 'ok', response })
+})
 
 module.exports = router;

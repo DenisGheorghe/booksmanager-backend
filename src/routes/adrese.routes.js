@@ -21,5 +21,12 @@ router.get('/get', async (req, res) => {
     res.json(ListaAdrese)
     console.log('Response => ', ListaAdrese)
 });
+router.delete('/delete', async (req, res) => {
+    const AdreseApi = req.body
+    console.log(AdreseApi)
+    const response = await AdreseModel.deleteOne(AdreseApi);
+    console.log(response)
+    res.json({ status: 'ok', response })
+})
 
 module.exports = router;

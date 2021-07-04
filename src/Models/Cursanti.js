@@ -2,14 +2,12 @@ const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true)
 
 const CursantiSchema = new mongoose.Schema({
-    _id: { type: String, required: true },
     Nume: { type: String, required: true },
     Prenume: { type: String, required: true },
     CNP: { type: Number, Min: 13, Max: 13, required: true },
-    Nr_Tel: { type: String, Min: 10, Max: 10, required: true },
-    Email: { type: Number, required: true },
-    Strada: { type: String, required: true },
-    Numar: { type: String },
+    Nr_Tel: { type: String, Min: 10, Max: 13, required: true },
+    Email: { type: String, required: true },
+    StradaSiNumar: { type: String, required: true },
     Oras: { type: String, required: true },
     Judet: { type: String, required: true },
     Tara: { type: String, required: true },

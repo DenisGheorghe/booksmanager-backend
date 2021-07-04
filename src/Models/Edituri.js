@@ -13,4 +13,3 @@ const EdituriSchema = new mongoose.Schema({
 const EdituriModel = mongoose.model('EdituriModel', EdituriSchema);
 module.exports = EdituriModel;
 
-

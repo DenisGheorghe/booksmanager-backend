@@ -19,32 +19,3 @@ module.exports = CartiModel;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// const Carti = model("Carti", {
-//     ISBN: String,
-//     Denumire_Carte: String,
-//     Cod_Autor: String,
-//     Domeniu: String,
-//     Stoc: Number,
-//     Cod_Editura: Number
-// });
-// const carte = new Carti({
-//     ISBN: 'Test',
-//     Denumire_Carte: 'Test',
-//     Cod_Autor: '123',
-//     Domeniu: 'Test',
-//     Stoc: 12,
-//     Cod_Editura: 123
-// })
-// carte.save().then(() => console.log('Test'));

@@ -21,5 +21,12 @@ router.get('/get', async (req, res) => {
     res.json(ListaAngajati)
     console.log('Response => ', ListaAngajati)
 });
+router.delete('/delete', async (req, res) => {
+    const angajatiApi = req.body
+    console.log(angajatiApi)
+    const response = await AngajatiModel.deleteOne(angajatiApi);
+    console.log(response)
+    res.json({ status: 'ok', response })
+})
 
 module.exports = router;

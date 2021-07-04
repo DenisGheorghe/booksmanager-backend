@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+var cors = require('cors');
 
 const CartiModel = require('../Models/Carti');
 
@@ -14,6 +15,8 @@ router.post('/create', async (req, res) => {
     res.json(response)
 })
 
+
+
 router.get('/get', async (req, res) => {
     const ListaCarti = await CartiModel
         .find({})
@@ -23,6 +26,52 @@ router.get('/get', async (req, res) => {
     res.json(ListaCarti)
     console.log('Response => ', ListaCarti)
 })
+
+// router.get('/get/:query', cors(), function (req, res) {
+//     var query = req.params.query;
+//     CartiModel.find({
+//         'Limba': query
+//     }, function (err, result) {
+//         if (err) throw err;
+//         if (result) {
+//             res.json(result)
+//         } else {
+//             res.send(JSON.stringify({
+//                 error: 'Error'
+//             }))
+//         }
+//     })
+// })
+
+router.get('/get/language/:query', cors(), async (req, res) => {
+    var query = req.params.query;
+    const response = await CartiModel.find({ 'Limba': query }).populate("Autor").populate("Cod_Editura")
+    console.log(response)
+    res.json(response)
+})
+
+
+// router.get('/get/:id', async (req, res) => {
+//     const ListaQuerryCarti = await CartiModel
+//         .findById(req.params.id).then(cartiFoundAuth => {
+//             if (!cartiFoundAuth) { return res.status(404).end(); }
+//             return res.status(200).json(cartiFoundAuth);
+//         })
+//         .catch(err => next(err));
+
+//     res.json(ListaQuerryCarti)
+//     console.log('Response => ', ListaQuerryCarti)
+// })
+
+router.get('/get/author/:query', async (req, res) => {
+    var query = req.params.query;
+
+    let response = await CartiModel.find({}).populate("Autor").populate("Cod_Editura")
+    response = response.filter(carte => carte.Autor && carte.Autor.Nume_Autor == query || carte.Autor.Prenume_Autor == query)
+    console.log(response)
+    res.json(response)
+})
+
 
 router.post('/update', async (req, res) => {
     const { old: oldItem, new: newItem } = req.body
@@ -40,20 +89,11 @@ router.post('/update', async (req, res) => {
     res.json({ status: 'ok' })
 })
 
-// router.post('/delete', async (req, res) => {
-//     const { ISBN } = req.body
-//     console.log(ISBN, 'api/delete')
-//     const response = await CartiModel.deleteOne({ ISBN })
-
-//     console.log(response, '/api/delete response')
-//     res.json({ status: 'ok' })
-// })
 router.delete('/delete', async (req, res) => {
     const CartiApi = req.body
-    console.log(CartiApi)
-
+    console.log(`Id-ul cartii este: ${CartiApi._id}`)
     const response = await CartiModel.deleteOne(CartiApi);
-    console.log(response)
     res.json({ status: 'ok', response })
 })
+
 module.exports = router;

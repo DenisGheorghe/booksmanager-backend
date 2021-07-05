@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 
 
 const Fisa_ImprumutSchema = new mongoose.Schema({
-    _id: { type: String },
+    // _id: { type: String },
     // Cod_Lista_Carti: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Cursanti' },
     Carti: [{
         Cod_Carte: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Carti' },
-    }],
-    Cod_Cursant: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Cursanti' },
-    Cod_Curs: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Curs' },
-    Cod_Angajat: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Angajat' },
-    Data_Imprumut: { type: Date, default: Date.now },
-    Data_Retur: { type: Date, default: Date.now + 14 }
+    }]
+    // Cod_Cursant: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Cursanti' },
+    // Cod_Curs: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Curs' },
+    // Cod_Angajat: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Angajat' },
+    // Data_Imprumut: { type: Date, default: Date.now },
+    // Data_Retur: { type: Date, default: Date.now + 14 }
 },
     {
         collection: 'Fisa_Imprumut'

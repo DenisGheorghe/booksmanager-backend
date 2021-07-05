@@ -7,12 +7,16 @@ const CartiSchema = new mongoose.Schema({
     Autor: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'AutoriModel' },
     Limba: { type: String },
     Stoc: { type: Number, default: 0 },
-    Cod_Editura: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'EdituriModel' }
+    Cod_Editura: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'EdituriModel' },
+    StocCurent: { type: Number }
 }, {
     collection: 'Carti'
 }
 );
-
+CartiSchema.pre('save', function (next) {
+    this.StocCurent = this.get('Stoc');
+    next();
+});
 
 const CartiModel = mongoose.model('CartiModel', CartiSchema);
 module.exports = CartiModel;

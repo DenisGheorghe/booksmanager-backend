@@ -8,7 +8,7 @@ const Fise_ImprumutModel = require('../Models/Fise_Imprumut');
 router.post('/create', async (req, res) => {
     const Fise_ImprumutApi = req.body
     console.log(Fise_ImprumutApi)
-    const response = await Fise_ImprumutModel.create(Fise_ImprumutApi);
+    const response = await Fise_ImprumutModel.create(Fise_ImprumutApi)
     console.log(response)
     res.json({ status: 'ok' })
 });
@@ -16,8 +16,8 @@ router.post('/create', async (req, res) => {
 router.get('/get', async (req, res) => {
     const Fise_Imprumut = await Fise_ImprumutModel
         .find({})
-        .populate('Cod_Carte')
-        .populate('Cusant')
+        .populate('Carti')
+        .populate('Cod_Cursant')
         .populate('Cod_Angajat')
 
     res.json(Fise_Imprumut)

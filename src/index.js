@@ -17,11 +17,10 @@ const AutoriRoutes = require('./routes/autori.routes');
 const EdituriRoutes = require('./routes/edituri.routes');
 const CartiRoutes = require('./routes/carti.routes');
 const AdreseRoutes = require('./routes/adrese.routes');
-const CursuriRoutes = require('./routes/cursuri.routes');
 const CursantiRoutes = require('./routes/cursanti.routes');
+const CursuriRoutes = require('./routes/cursuri.routes');
 const AngajatiRoutes = require('./routes/angajati.routes');
 const Fise_ImprumutRoutes = require('./routes/fise_imprumut.routes');
-const Lista_CartiRoutes = require('./routes/lista_carti.routes');
 
 //Api Routes
 app.use('/', GenericRoutes);
@@ -29,11 +28,10 @@ app.use('/api/carti', CartiRoutes);
 app.use('/api/autori', AutoriRoutes);
 app.use('/api/edituri', EdituriRoutes);
 app.use('/api/adrese', AdreseRoutes);
-app.use('/api/cursuri', CursuriRoutes);
 app.use('/api/cursanti', CursantiRoutes);
+app.use('/api/cursuri', CursuriRoutes);
 app.use('/api/angajati', AngajatiRoutes);
 app.use('/api/fise_imprumut', Fise_ImprumutRoutes);
-app.use('/api/lista_carti', Lista_CartiRoutes);
 
 //Start the server
 app.listen(appPort, () => {

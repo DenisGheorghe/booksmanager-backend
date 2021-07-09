@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true)
 
 const CartiSchema = new mongoose.Schema({
-    _id: { type: String, min: 13, max: 13, required: true },
+    ISBN: { type: String, min: 13, max: 13, required: true },
     Denumire_Carte: { type: String },
     Autor: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'AutoriModel' },
     Limba: { type: String },

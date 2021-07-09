@@ -16,8 +16,6 @@ router.post('/create', async (req, res) => {
 router.get('/get', async (req, res) => {
     const ListaCursuri = await CursuriModel
         .find({})
-        .populate('Autor')
-
     res.json(ListaCursuri)
     console.log('Response => ', ListaCursuri)
 })

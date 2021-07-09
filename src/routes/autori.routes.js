@@ -24,13 +24,6 @@ router.get('/get', async (req, res) => {
     console.log('Response => ', ListaAutori)
 })
 
-router.get('/get', async (req, res) => {
-    const ListaAutori = await AutoriModel
-        .find({})
-
-    res.json(ListaAutori)
-    console.log('Response => ', ListaAutori)
-})
 router.get('/get/:id', async (req, res) => {
     const ListaAutori = await AutoriModel
         .findById(req.params.id).then(authfound => {

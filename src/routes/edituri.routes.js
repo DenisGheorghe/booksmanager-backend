@@ -21,13 +21,13 @@ router.get('/get', async (req, res) => {
     console.log('Response => ', ListaEdituri)
 })
 
-router.post('/delete', async (req, res) => {
-    const { ISBN } = req.body
-    console.log(ISBN, 'api/delete')
-    const response = await EdituriModel.deleteOne({ _id })
-
-    console.log(response, '/api/delete response')
-    res.json({ status: 'ok' })
+router.delete('/delete', async (req, res) => {
+    const EdituriApi = req.body
+    console.log(EdituriApi)
+    const response = await EdituriModel.deleteOne(EdituriApi);
+    console.log(response)
+    res.json({ status: 'ok', response })
 })
+
 
 module.exports = router;

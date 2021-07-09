@@ -13,7 +13,7 @@ router.post('/create', async (req, res) => {
     Logger.debug(Test)
     const response = await EdituriModel.create(Test);
     Logger.debug(response)
-    res.json({ response })
+    res.json(response)
 })
 
 router.get('/get', async (req, res) => {

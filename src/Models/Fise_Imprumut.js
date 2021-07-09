@@ -13,7 +13,7 @@ const Fisa_ImprumutSchema = new mongoose.Schema({
     Cod_Angajat: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'AngajatiModel' },
     Data_Imprumut: { type: String, },
     Data_Retur: { type: String },
-    Returnat: { type: Boolean, default: false }
+    Returnat: { type: Boolean }
     // Data_Imprumut: { type: Date, default: Date.now() },
     // Data_Retur: { type: Date, default: Date.now() + 14 * 24 * 60 * 60 * 1000 },
 },

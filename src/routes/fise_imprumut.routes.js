@@ -72,17 +72,22 @@ router.get('/get/cursant/:query', cors(), async (req, res) => {
 })
 
 router.put('/update', async (req, res) => {
-    const AutoriApi = req.body
-    Logger.debug(AutoriApi)
-    const response = await AutoriModel.updateOne(AutoriApi);
-    Logger.debug(response)
-    res.json({ status: 'ok', response })
+    const AutoriApi = req.body.data;
+    Logger.debug(JSON.stringify(AutoriApi))
+    const updateResultawait = await Fise_ImprumutModel.updateOne({ _id: AutoriApi.id }, AutoriApi);
+    console.log(updateResultawait);
+    const response = await Fise_ImprumutModel.findOne({ _id: AutoriApi.id }).populate('Carti.Cod_Carte')
+        .populate('Cod_Curs')
+        .populate('Cod_Cursant')
+        .populate('Cod_Angajat');
+    // Logger.debug(response)
+    res.json(response)
 })
 
 router.delete('/delete', async (req, res) => {
     const AutoriApi = req.body
     Logger.debug(AutoriApi)
-    const response = await AutoriModel.deleteOne(AutoriApi);
+    const response = await Fise_ImprumutModel.deleteOne(AutoriApi);
     Logger.debug(response)
     res.json({ status: 'ok', response })
 })

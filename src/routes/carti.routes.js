@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+const Logger = require('../logger');
 var cors = require('cors');
 
 const CartiModel = require('../Models/Carti');

@@ -1,6 +1,7 @@
 const moment = require('moment');
 
 const SEVERITY_LEVEL = {
+    'DEBUG': { type: 'log', emoji: '', text: 'DEBUG' },
     'INFO': { type: 'log', emoji: '🔵', text: 'INFO' },
     'WARN': { type: 'warn', emoji: '🟡', text: 'WARN' },
     'ERROR': { type: 'error', emoji: '🔴', text: 'ERROR' },
@@ -21,10 +22,13 @@ class Logger {
         this._log(SEVERITY_LEVEL.ERROR, args);
     }
 
+    debug(...args) {
+        this._log(SEVERITY_LEVEL.DEBUG, args);
+    }
+
     _log(severity, ...args) {
-        console.log(args.length)
-        console[severity.type](`${severity.emoji} [${severity.text} : ${moment().format('yyyy-mm-dd hh:mm')}] ${args}`);
+        console[severity.type](`${severity.emoji} [${severity.text} : ${moment().format('DD-mm-yyyy hh:mm')}] ${args}`);
     }
 }
 
-exports.default = new Logger();
+module.exports = new Logger();

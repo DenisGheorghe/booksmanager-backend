@@ -2,10 +2,10 @@ require("./db");
 
 const express = require("express");
 const cors = require("cors");
+const Logger = require('./logger');
 
 const app = express();
 const appPort = 4000;
-
 
 // Initialize middleware 
 app.use(express.json());
@@ -34,9 +34,13 @@ app.use('/api/angajati', AngajatiRoutes);
 app.use('/api/fise_imprumut', Fise_ImprumutRoutes);
 
 //Start the server
-app.listen(appPort, () => {
-        console.log(`🚀 App is up and running on port ${appPort}`)
 
-})
-
-
+(() => {
+    try {
+        app.listen(appPort, () => {
+            Logger.info(`App is up and running on port ${appPort}`);
+        })
+    } catch (error) {
+        Logger.error('Un unhandled error occured: ', error)
+    }
+})();

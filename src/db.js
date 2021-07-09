@@ -1,24 +1,18 @@
 const { connect } = require("mongoose");
-const mongoose = require('mongoose');
-const CartiModel = require('./Models/Carti');
 
+const Logger = require("./logger");
+const DB_CONNECTION_STRING = "mongodb://localhost:27017/BooksManager";
 
-try {
-    connect("mongodb://localhost:27017/BooksManager", {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-    console.log("Connected Successfuly");
+(async () => {
+    try {
+        await connect(DB_CONNECTION_STRING, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
 
-
-    // const Cat = model('Cat', { name: String, age: Number });
-    // const kitty = new Cat({ name: 'Zildjian', age: 12 });
-    // kitty.save().then(() => console.log('meow'));
-    console.log('Carti require =>', CartiModel);
-    console.log('Carti from mongoose =>', mongoose.model('CartiModel'));
-}
-
-catch (error) {
-    console.log("Error", error);
-}
-
+        Logger.info('Succesfully connected to the database');
+    }
+    catch (error) {
+        Logger.error("Error while connecting to db:", error);
+    }
+})();

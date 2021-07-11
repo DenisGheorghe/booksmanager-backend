@@ -74,21 +74,17 @@ router.get('/get/author/:query', async (req, res) => {
 })
 
 
-router.post('/update', async (req, res) => {
-    const { old: oldItem, new: newItem } = req.body
-    const response = await CartiModel.updateOne({
-        _id: oldItem
-    },
-        {
-            $set: {
-                _id: newItem
-            }
-        }
-    )
-    console.log(response)
 
-    res.json({ status: 'ok' })
+router.put('/update', async (req, res) => {
+    const cartiUpdate = req.body.data;
+    Logger.debug(JSON.stringify(cartiUpdate))
+    const updateResultawait = await CartiModel.updateOne({ _id: cartiUpdate.id }, cartiUpdate);
+    console.log(updateResultawait);
+    const response = await CartiModel.findOne({ _id: cartiUpdate.id }).populate("Autor").populate("Cod_Editura")
+    // Logger.debug(response)
+    res.json(response)
 })
+
 
 router.delete('/delete', async (req, res) => {
     const CartiApi = req.body

@@ -26,7 +26,7 @@ router.delete('/delete', async (req, res) => {
     console.log(AdreseApi)
     const response = await AdreseModel.deleteOne(AdreseApi);
     console.log(response)
-    res.json({ status: 'ok', response })
+    res.json(response)
 })
 
 module.exports = router;

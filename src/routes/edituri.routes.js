@@ -29,7 +29,7 @@ router.delete('/delete', async (req, res) => {
     Logger.debug(EdituriApi)
     const response = await EdituriModel.deleteOne(EdituriApi);
     Logger.debug(response)
-    res.json({ status: 'ok', response })
+    res.json(response)
 })
 
 

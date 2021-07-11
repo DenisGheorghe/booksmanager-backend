@@ -53,14 +53,12 @@ router.get('/get/querry/:query', cors(), function (req, res) {
     })
 })
 
-
-
 router.put('/update', async (req, res) => {
     const AutoriApi = req.body
     console.log(AutoriApi)
     const response = await AutoriModel.updateOne(AutoriApi);
     console.log(response)
-    res.json({ status: 'ok', response })
+    res.json(response)
 })
 
 router.delete('/delete', async (req, res) => {
@@ -68,7 +66,7 @@ router.delete('/delete', async (req, res) => {
     console.log(AutoriApi)
     const response = await AutoriModel.deleteOne(AutoriApi);
     console.log(response)
-    res.json({ status: 'ok', response })
+    res.json(response)
 })
 
 

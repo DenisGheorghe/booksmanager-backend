@@ -24,7 +24,7 @@ router.delete('/delete', async (req, res) => {
     Logger.debug(cursuriApi)
     const response = await CursuriModel.deleteOne(cursuriApi);
     Logger.debug(response)
-    res.json({ status: 'ok', response })
+    res.json(response)
 })
 
 module.exports = router;

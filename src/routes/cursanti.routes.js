@@ -11,7 +11,7 @@ router.post('/create', async (req, res) => {
     const newCoursant = await CursantiModel.create(CursantiApi);
     const response = await CursantiModel.findOne(newCoursant).populate("Cod_Curs")
     Logger.debug(response)
-    res.json({ response })
+    res.json(response)
 })
 
 router.get('/get', async (req, res) => {
@@ -26,7 +26,7 @@ router.delete('/delete', async (req, res) => {
     Logger.debug(CursantiApi)
     const response = await CursantiModel.deleteOne(CursantiApi);
     Logger.debug(response)
-    res.json({ status: 'ok', response })
+    res.json(response)
 })
 
 module.exports = router;

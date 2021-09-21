@@ -21,6 +21,19 @@ router.get('/get', async (req, res) => {
     res.json(ListaCursanti)
     Logger.debug('Response => ', ListaCursanti)
 })
+
+router.put('/update', async (req, res) => {
+    const cursantiUpdate = req.body.data;
+    Logger.debug(JSON.stringify(cursantiUpdate))
+    const updateResultawait = await CursantiModel.updateOne({ _id: cursantiUpdate.id }, cursantiUpdate);
+    console.log(updateResultawait);
+    const response = await CursantiModel.findOne({ _id: cursantiUpdate.id }).populate("Cod_Curs")
+    // Logger.debug(response)
+    res.json(response)
+})
+
+
+
 router.delete('/delete', async (req, res) => {
     const CursantiApi = req.body
     Logger.debug(CursantiApi)

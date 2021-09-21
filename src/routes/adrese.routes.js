@@ -9,8 +9,8 @@ router.post('/create', async (req, res) => {
     const AdreseApi = req.body
     console.log(AdreseApi)
     const response = await AdreseModel.create(AdreseApi);
-    console.log(response)
-    res.json({ response })
+    console.log(response),
+        res.json({ response })
 });
 
 router.get('/get', async (req, res) => {
